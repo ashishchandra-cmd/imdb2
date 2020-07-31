@@ -1,0 +1,25 @@
+{% extends 'testapp/base.html' %}
+ {% block body_main %}
+     <div  class="container-fluid">
+             <div class="media ">
+                <img src="{{ movies.posters.url }} " width="250px" height="200px" class="mr-4 " alt="...">
+                 <div class="media-body ">
+                 <h2 class="mt-0 text-success "  style="font-size:35px ">{{ movies.Title }}</h2>
+                  <p class="bg-secondary">{{ movies.Summary }}</p>
+                   </div>
+             </div>
+          <ul class="text-secondary">
+             <li  > Release Date : <a href="" class="text-primary ">{{ movies.Release_Date }}</a></li> <br>
+              <li  >Rating : <span class="badge badge-primary ">{{ movies.Rating}}</span></li> <br>
+            <li>Director : <a href="" class="text-primary "> {{ movies.Director }} </a> </li> <br>
+              <li> Writer : <a href=""> {{ movies.Writer }}</a> </li> <br>
+              <li>Actor :<a href="">{{ movies.Actor}} </a></li> <br>
+              <li>Production : <a href="">{{movies.Production}} </a></li> <br>
+            <li>Language :<span class="badge badge-primary ">{{ movies.Language }}</span></li> <br>
+              <li>Country :<span class="badge badge-primary ">{{ movies.Country }}</span></li> <br>
+           </ul>
+            <video width="400" controls>
+              <source src='{{ movies.Trailer.MEDIA_URL }}' type="video/mp4">
+            </video>
+   </div>
+ {% endblock %}

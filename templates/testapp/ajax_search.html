@@ -1,0 +1,11 @@
+{% if articles %}
+    {% for article in articles %}
+        <li>
+         <a href="/{{ article.id }}/"> {{ article.Title }} </a>
+        </li>
+    {% endfor %}
+    {% else %}
+    <li>
+     None to Show!
+    </li>
+{% endif %}

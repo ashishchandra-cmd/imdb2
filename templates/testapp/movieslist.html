@@ -1,0 +1,50 @@
+{% extends 'testapp/base.html' %}
+   {% block insert_url %}
+       <a class="btn btn-success" style="margin-left:400px ;" href="{% url 'create' %}">Insert new Movies</a> {% endblock %}
+
+{% block body_main %}
+     <div  class="container-fluid">
+     <table class="table" style="font-size:10px">
+         <thead class="table table-primary ">
+         <tr>
+             <th>Title</th>
+             <th>Release_Date</th>
+             <th>Rating</th>
+             <th>Director</th>
+             <th>Writer</th>
+             <th>Actor</th>
+             <th>Production</th>
+             <th>Summary</th>
+             <th>Language</th>
+             <th>Country</th>
+             <th>posters</th>
+             <th>Trailer</th>
+             <th colspan="2"> Actions</th>
+         </tr>
+         </thead>
+         <tbody>
+         {% for m in movie %}
+         <tr>
+             <td>{{ m.Title }}</td>
+             <td>{{ m.Release_Date }}</td>
+            <td>{{ m.Rating}}</td>
+            <td>{{ m.Director }}</td>
+            <td>{{ m.Writer }}</td>
+            <td>{{ m.Actor}}</td>
+            <td>{{ m.Production}}</td>
+            <td>{{ m.Summary }}</td>
+         <td>{{ m.Language }}</td>
+         <td>{{ m.Country }}</td>
+         <td> <img src="{{ m.posters.url }} " width="70px" height="100px"> </td>
+         <td> <video width='200' controls>
+         <source src='{{ m.Trailer.MEDIA_URL }}' type='video/mp4'></video></td>
+           <td class="btn btn-success"> <a href="/update/{{ m.id }}">Update</a> </td>
+          <td class="btn btn-danger"> <a href="/delete/{{ m.id }}">Delete</a> </td>
+
+         </tr>
+
+         {% endfor %}
+         </tbody>
+     </table>
+   </div>
+{% endblock %}

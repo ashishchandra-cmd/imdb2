@@ -1,0 +1,22 @@
+{% extends 'testapp/base.html' %}
+{% block body_main %}
+     <div class="container-fluid"  >
+      <h1>Movie Search Here</h1>
+       {% csrf_token %}
+        <input  id="id_search" type="search" placeholder="Search">
+
+       <ul id="id_search_result">
+       </ul>
+
+     <div >
+          {% include 'testapp/pagination.html' with page=page_obj %}
+     </div> <br>
+      {% for m in movies_list %}
+          <div style="float: left;">
+              <a href="/{{ m.id }}"> <img src="{{ m.posters.url }} " width="280px" height="200px" class="mr-4 " > </a>
+              <h1> <a href="/{{ m.id }}"> {{ m.Title }} </a></h1>
+              <h2> IMDB Rating : <span class="badge badge-success"> <a href="/{{ m.id }}"> {{ m.Rating }} </a></span></h2>
+         </div>
+      {% endfor %}
+     </div>
+{% endblock %}
